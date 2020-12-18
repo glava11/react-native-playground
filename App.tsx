@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -24,7 +16,12 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+import Hello from '@components/hello';
+
+const App: () => React.ReactNode = () => {
+  const usingHermes =
+    // eslint-disable-next-line no-undef
+    typeof HermesInternal === 'object' && HermesInternal !== null;
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -33,7 +30,7 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {global.HermesInternal == null ? null : (
+          {!usingHermes ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
             </View>
@@ -42,8 +39,8 @@ const App: () => React$Node = () => {
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>jebote mišur</Text>
               <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
+                Edit <Text style={styles.highlight}>App.TSX NOW WOOOOW</Text> to
+                change this screen and then come back to see your edits.
               </Text>
             </View>
             <View style={styles.sectionContainer}>
@@ -65,6 +62,9 @@ const App: () => React$Node = () => {
               </Text>
             </View>
             <LearnMoreLinks />
+          </View>
+          <View>
+            <Hello name="glava" enthusiasmLevel={2} />
           </View>
         </ScrollView>
       </SafeAreaView>
